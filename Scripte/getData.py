@@ -2,12 +2,12 @@ import dvc.api
 import numpy as np
 
 Features = modelpkl = dvc.api.read(
-    'FeatureDataTest.npy',
+    'Data/FeatureDataTest.npy',
     repo='https://github.com/marlusmate/B_SimOpt.git',
     mode='rb')
 
 Labels = modelpkl = dvc.api.read(
-    'LabelTest.npy',
+    'Data/LabelTest.npy',
     repo='https://github.com/marlusmate/B_SimOpt.git',
     mode='rb')
 
