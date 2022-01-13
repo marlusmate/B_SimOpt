@@ -10,6 +10,8 @@ jobs:
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
+        
+          /usr/bin/python3 -m pip install --upgrade pip
           pip install -r requirements.txt
           
           #wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1wuQbk0kPtH4sLj2X6OtYlkviNLYY_rQS' -O FeatureDataTest.npy
