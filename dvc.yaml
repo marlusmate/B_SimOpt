@@ -2,9 +2,6 @@ stages:
   pull:
     cmd: dvc pull 'FeatureDataTest.npy'
          dvc pull 'LabelTest.npy
-    deps:
-    - FeatureDataTest.npy
-    - LabelTest.npy
   train:
     cmd: python Scripte/ModelTesting.py
     deps:
