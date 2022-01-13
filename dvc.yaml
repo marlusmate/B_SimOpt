@@ -1,8 +1,8 @@
 stages:
   train:
-    cmd: python Scripte/TestModel.py
+    cmd: python Scripte/ModelTesting.py
     deps:
-    - Scripte/TestModel.py
+    - Scripte/ModelTesting.py
     - FeatureDataTest.npy
     - LabelTest.npy
     outs:
