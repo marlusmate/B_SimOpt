@@ -2,7 +2,7 @@ stages:
   pull:
     cmd: python Scripte/getData.py
     outs: 
-      -FeatureDataTest.npy
+      - FeatureDataTest.npy
   train:
     cmd: python Scripte/ModelTesting.py
     deps:
