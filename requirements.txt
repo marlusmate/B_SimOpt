@@ -1,0 +1,8 @@
+wget
+os
+sklearn
+numpy
+matplotlib
+seaborn
+json
+pickle
