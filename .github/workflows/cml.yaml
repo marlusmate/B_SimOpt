@@ -14,11 +14,8 @@ jobs:
           /usr/bin/python3 -m pip install --upgrade pip
           pip install -r requirements.txt
           
-          wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1wuQbk0kPtH4sLj2X6OtYlkviNLYY_rQS' -O FeatureDataTest.npy
-          wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1XYgyZAn5WqxXpkOP1v3tewzG8N5uFHOY' -O LabelTest.npy
-          dvc pull FeatureDataTest.npy
-          dvc pull LabelTest.npy
-          
+          #wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1wuQbk0kPtH4sLj2X6OtYlkviNLYY_rQS' -O FeatureDataTest.npy
+          #wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1XYgyZAn5WqxXpkOP1v3tewzG8N5uFHOY' -O LabelTest.npy          
           dvc repro 
           git fetch --prune
           dvc metrics diff --show-md master > report.md
