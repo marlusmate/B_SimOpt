@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from sklearn import metrics as met
 import json
 
-clf = pickle.load(open("models/model.pkl", "rb"))
+clf = pickle.load(open("../models/model.pkl", "rb"))
 X_test = np.load('FeatureDataTest.npy')
 y_test = np.load('LabelTest.npy')
 print("Testdatensätze geladen")
