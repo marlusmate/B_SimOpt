@@ -1,8 +1,8 @@
 stages:
   pull:
     cmd: dvc remote add -d myremote gdrive:1CaQms04TfsOWClypnRCHcXB_sg2_0-ob
-         dvc get 'FeatureDataTest.npy'
-         dvc get 'LabelTest.npy
+         #dvc pull 'FeatureDataTest.npy'
+         #dvc get 'LabelTest.npy
   train:
     cmd: python Scripte/ModelTesting.py
     deps:
