@@ -4,5 +4,4 @@ sklearn
 numpy
 matplotlib
 seaborn
-json
-pickle
+
