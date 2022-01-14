@@ -12,7 +12,7 @@ jobs:
         run: |
         
           dvc metrics show
-          dvc metrics diff --targets metrics.json --show-md main  > report.md
+          dvc metrics diff --targets metrics.json --show-md  > report.md
           
           # Add figure to the report
           echo "## Validating results by region"
