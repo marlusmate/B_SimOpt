@@ -1,12 +1,8 @@
 stages:
   train:
-    cmd: python Scripte/ModelTesting.py
+    cmd: python Scripte/getMetrics.py
     deps:
-    - Scripte/ModelTesting.py
-    
-    outs:
-    - MetricsMLBarplot.png
-    - MetricsMLConfusionmatrix.png    
+    - Scripte/getMetrics.py    
     metrics:
     - metrics.json:
         cache: false
