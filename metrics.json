@@ -1,1 +1,1 @@
-{"Precision": 0.9853126, "Recall": 0.8858064516129031, "F1-Score": 0.96231746031743, "Hamming-Loss": 0.04164556962025317}
+{"Precision": 0.985, "Recall": 0.885, "F1-Score": 0.962, "Hamming-Loss": 0.041}
