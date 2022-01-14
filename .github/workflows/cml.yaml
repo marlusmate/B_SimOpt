@@ -11,7 +11,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |     
 
-          dvc metrics diff > report.md
+          dvc metrics diff --json > report.md
           
           # Add figure to the report
           echo "## Validating results by region"
