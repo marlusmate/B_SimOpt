@@ -9,8 +9,8 @@ jobs:
       - name: cml_run
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-        run: |        
-      
+        run: |     
+
           dvc metrics diff --targets metrics.json --show-md  > report.md
           
           # Add figure to the report
