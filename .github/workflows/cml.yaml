@@ -12,9 +12,9 @@ jobs:
         run: |
         
       
-          dvc metrics diff --targets metrics.json --md  > report.md
+          dvc metrics diff --targets metrics.json --show-md  > report.md
           
           # Add figure to the report
           echo "## Validating results by region"
-          cml-publish Abbildungen/MetricsMLBarplot.png --show-md > report.md
+          cml-publish Abbildungen/MetricsMLBarplot.png --md > report.md
           cml-send-comment report.md
