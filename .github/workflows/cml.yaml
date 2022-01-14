@@ -15,5 +15,5 @@ jobs:
           
           # Add figure to the report
           echo "## Validating results by region"
-          cml-publish Abbildungen/MetricsMLBarplot.png --md > report.md
+          cml-publish Abbildungen/MetricsMLBarplot.png --md >> report.md
           cml-send-comment report.md
