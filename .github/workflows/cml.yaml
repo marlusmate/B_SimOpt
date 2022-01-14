@@ -13,11 +13,11 @@ jobs:
         
           /usr/bin/python3 -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install 'dvc[gdrive]'
+          #pip install 'dvc[gdrive]'
           
           #wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1wuQbk0kPtH4sLj2X6OtYlkviNLYY_rQS' -O FeatureDataTest.npy
           #wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1XYgyZAn5WqxXpkOP1v3tewzG8N5uFHOY' -O LabelTest.npy          
-          dvc repro 
+          #dvc repro 
           git fetch --prune
           dvc metrics diff --show-md master > report.md
           
