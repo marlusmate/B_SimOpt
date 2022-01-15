@@ -47,5 +47,7 @@ plt.savefig("../Abbildungen/MetricsMLConfusionmatrix.png")
 with open("metrics.json", 'w') as outfile:
         json.dump({ "Precision": pr, "Recall": rc, "F1-Score":f1, "Hamming-Loss":hl}, outfile)
 
+with open("../metrics.json", 'w') as outfile:
+        json.dump({ "Precision": pr, "Recall": rc, "F1-Score":f1, "Hamming-Loss":hl}, outfile)
 
 print('##Testing abgeschlossen##')
