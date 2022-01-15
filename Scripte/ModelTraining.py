@@ -19,8 +19,8 @@ y_train = y
 #hier fehlt noch sh für random search
 
 #model
-from sklearn.svm import SVC
-clf = SVC()
+from sklearn.tree import DecisionTreeClassifier as DTC
+clf = DTC()
 clf.fit(X_train, y_train)
 
 print('Model erfolgreich trainiert\n')
