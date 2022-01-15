@@ -4,8 +4,6 @@ stages:
     deps:
     - ./Scripte/getMetrics.py    
     - ./Scripte/metrics.json
-    outs:
-    - ./metrics.json
     metrics:
     - metrics.json:
         cache: false
