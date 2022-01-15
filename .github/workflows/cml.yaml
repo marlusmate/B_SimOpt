@@ -10,10 +10,13 @@ jobs:
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |     
-
-          dvc metrics diff --show-md > report.md
+        
+          pip install -r requirements.txt
+          dvc repro
+          git fetch --prune
+          dvc metrics diff --show-md main > report.md
           
           # Add figure to the report
           echo "## Validating results by region"
-          cml-publish Abbildungen/MetricsMLBarplot.png --md > report.md
+          cml-publish Abbildungen/MetricsMLBarplot.png --md >> report.md
           cml-send-comment report.md
