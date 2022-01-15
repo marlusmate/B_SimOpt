@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 from sklearn import metrics as met
 import json
 
-clf = pickle.load(open("models/model.pkl", "rb"))
-X_test = np.load('FeatureDataTest.npy')
-y_test = np.load('LabelTest.npy')
+clf = pickle.load(open("../models/model.pkl", "rb"))
+X_test = np.load('../Data/FeatureDataTest.npy')
+y_test = np.load('../Data/LabelTest.npy')
 print("Testdatensätze geladen")
 print("Anzahl Instanzen: ", len(y_test))
 print('Verteilung Klassen::     Normal: ',np.count_nonzero(y_test==0), '     Slugging: ', np.count_nonzero(y_test==1), '\n')
@@ -23,7 +23,7 @@ fig = 1
 plt.figure(fig)
 fig =fig + 1
 plt.bar(metr_ls[0], metr_ls[1])
-plt.savefig("MetricsMLBarplot.png")
+plt.savefig("../Abbildungen/MetricsMLBarplot.png")
 #plt.close()
 
 #viz-eval
@@ -41,7 +41,7 @@ ax.xaxis.set_ticklabels(['Normal','Slugging'])
 ax.yaxis.set_ticklabels(['Normal','Slugging'])
 
 plt.show()
-plt.savefig("MetricsMLConfusionmatrix.png")
+plt.savefig("../Abbildungen/MetricsMLConfusionmatrix.png")
 
 #write scores to a file
 with open("metrics.json", 'w') as outfile:
