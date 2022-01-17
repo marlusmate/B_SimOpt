@@ -1,6 +1,7 @@
 #Bibs
 import pandas as pd
 import numpy as np
+import random as rd
 import matplotlib.pyplot as plt
 import seaborn as sns
 print("Bibliothken erfolgreich Importiert\n")
@@ -132,3 +133,50 @@ def shorten_df(df_in, ind_in, exp_in, rows, method):
         df_f[:,i,:] = xr
 
     return df_f, ltest
+
+def random_search(X_train, y_train, splitter, max_depth, k, max_iter):
+    from sklearn.tree import DecisionTreeClassifier as DTC
+
+    score = 0
+    seed = 22
+
+    for i in range(0, max_iter):
+        sp = splitter[rd.randint(0, 1)]
+        md = max_depth[rd.randint(0, len(max_depth)-1)]
+        sc_temp = np.zeros(k)
+        #cross-val
+        for j in np.arange(0, k):
+            if len(X_train) % k != 0:
+                X_train = X_train[:-(len(X_train) % k)]
+                y_train = y_train[:len(X_train)]
+            trval_dtemp = np.split(X_train, k)
+            trval_ltemp = np.split(y_train, k)
+            val_dtemp = trval_dtemp[j]
+            val_ltemp = trval_ltemp[j]
+            train_dtemp = np.zeros((len(X_train)-len(X_train)//k, X_train.shape[1]))
+            train_ltemp = np.zeros((len(train_dtemp)), dtype=int)
+
+            idx_temp = 0
+            for m in np.arange(0, k):
+                if m != j:
+                    train_dtemp[idx_temp:(idx_temp+len(X_train)//k)] = trval_dtemp[m]
+                    train_ltemp[idx_temp:(idx_temp+len(X_train)//k)] = trval_ltemp[m]
+                    idx_temp = idx_temp+len(X_train)//k
+            clf = DTC(splitter=sp, max_depth=md, random_state=seed)
+            clf.fit(train_dtemp, train_ltemp)
+            sc_temp[j] = clf.score(val_dtemp, val_ltemp)
+
+        mscore = np.mean(sc_temp)
+        if mscore > score:
+            score = mscore
+            bsplitter = sp
+            bmd = md
+            bclf = DTC(splitter=bsplitter, max_depth=bmd, random_state=seed)
+        if mscore == 1:
+            break
+
+    print("##Random Search abgeschlossen##")
+    print("Score: ", score)
+    print("Parameter::  ", "Splitter: ", bsplitter, "MaxDepth: ", bmd)
+
+    return bclf
