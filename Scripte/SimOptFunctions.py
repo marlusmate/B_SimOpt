@@ -142,7 +142,7 @@ def random_search(X_train, y_train, splitter, max_depth, class_weight,  k, max_i
     seed = 22
 
     for i in range(0, max_iter):
-        print("Iterations Number: ", i)
+        print("Iteration Numner: ", i, " / ", max_iter)
         sp = splitter[rd.randint(0, 1)]
         md = max_depth[rd.randint(0, len(max_depth)-1)]
         cw = class_weight[rd.randint(0, len(class_weight)-1)]
@@ -174,13 +174,14 @@ def random_search(X_train, y_train, splitter, max_depth, class_weight,  k, max_i
             score = mscore
             bsplitter = sp
             bmd = md
-            bclf = DTC(splitter=bsplitter, max_depth=bmd, random_state=seed)
+            bcw = cw
+            bclf = DTC(splitter=bsplitter, max_depth=bmd, class_weight=bcw, random_state=seed)
             print("Verbesserung gefunden! Neuer Score: ", score)
         if mscore == 1:
             break
 
     print("##Random Search abgeschlossen##")
     print("Score: ", score)
-    print("Parameter::  ", "Splitter: ", bsplitter, "MaxDepth: ", bmd)
+    print("Parameter::  ", "Splitter: ", bsplitter, "MaxDepth: ", bmd, "class_weight: ", bcw)
 
     return bclf
