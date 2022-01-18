@@ -5,6 +5,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn import metrics as met
 import json
+import os
 
 clf = pickle.load(open("../models/model.pkl", "rb"))
 X_test = np.load('../Data/FeatureDataTest.npy')
@@ -23,7 +24,12 @@ fig = 1
 plt.figure(fig)
 fig =fig + 1
 plt.bar(metr_ls[0], metr_ls[1])
-plt.savefig("../Abbildungen/MetricsMLBarplot.png")
+#save
+strFile = "../Abbildungen/MetricsMLBarplot.png"
+if os.path.isfile(strFile):
+   os.remove(strFile)   # Opt.: os.system("rm "+strFile)
+plt.savefig(strFile)
+plt.savefig(strFile)
 #plt.close()
 
 #viz-eval
@@ -41,7 +47,11 @@ ax.xaxis.set_ticklabels(['Normal','Slugging'])
 ax.yaxis.set_ticklabels(['Normal','Slugging'])
 
 plt.show()
-plt.savefig("../Abbildungen/MetricsMLConfusionmatrix.png")
+#save
+strFile = "../Abbildungen/MetricsMLConfusionmatrix.png"
+if os.path.isfile(strFile):
+   os.remove(strFile)   # Opt.: os.system("rm "+strFile)
+plt.savefig(strFile)
 
 #write scores to a file
 with open("metrics.json", 'w') as outfile:

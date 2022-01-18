@@ -23,15 +23,18 @@ from sklearn.tree import DecisionTreeClassifier as DTC
 clf = DTC()
 
 #random search
-import random as rd
+import SimOptFunctions as fc
+
 score = 0
 seed = 22
-max_iter = 20
-k = 10
+max_iter = 100
+k = 15
 splitter = ["best", "random"]
 max_depth = np.arange(1, 10)
+class_weight = [{0:1, 1:1}, {0: 1, 1:2}, {0:0, 1:5}]
 
-clf = fc.random_search(X_train, y_train, spliiter, max_depth, k, max_iter)
+clf = fc.random_search(X_train, y_train, splitter, max_depth, class_weight, k, max_iter)
+clf.fit(X_train, y_train)
 
 print('Model erfolgreich trainiert\n')
 
